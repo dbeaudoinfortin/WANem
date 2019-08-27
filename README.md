@@ -6,6 +6,7 @@ WANem running on Ubuntu 18.04.2
 * Install Software
 	* apt-get install apache2 php7.2 libapache2-mod-php7.2
 
+
 * Adjust system configuration
 	* /etc/sudoers -> Add lines to your file
 	* /etc/apache2 -> Adjust Default Webshare accordingly.
@@ -16,8 +17,34 @@ WANem running on Ubuntu 18.04.2
 * Restart apache  
 	* systemctl restart apache2
 	
+## Optional bridge configuration
 
-## Previous README:
+* Install Software
+	* apt-get install bridge-utils (only needed if bridge mode is wanted)
+* Get all NIC Names( ip address show)
+* Remove all NIC definitions from /etc/network/interfaces
+* Add to /etc/network/interfaces:
+auto br0
+iface br0 inet dhcp
+ bridge_ports eth0 eth1 ethn	 
+* Reboot PC
+
+## Optional autologon and open browser to WANem
+* Upper right -> User -> Account settings:
+	* Unlock button on window bar
+	* set automatic logon
+* windows button -> open "startup applications"
+	* add:
+Name: Firefox
+Command: /usr/bin/firefox
+Comment: "Start Firefox with WANem"
+* Open Firefox -> Edit -> Preferences
+	* Home
+	* Custom URL: http://localhost/WANem
+
+
+
+# Previous README:
 
 These are the source files from WANem (http://wanem.sourceforge.net/). 
 
