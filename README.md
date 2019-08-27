@@ -1,3 +1,24 @@
+WANem running on Ubuntu 18.04.2
+
+# WANem for Ubuntu
+
+## Preparations
+* Install Software
+	* apt-get install apache2 php7.2 libapache2-mod-php7.2
+
+* Adjust system configuration
+	* /etc/sudoers -> Add lines to your file
+	* /etc/apache2 -> Adjust Default Webshare accordingly.
+	* /etc/php/7.2/[apache2|cli]/php.ini -> Verify all parameters are set as in provided files. 
+	* copy /root/* to your /root folder
+	* copy /var/www/* to your /var/www
+
+* Restart apache  
+	* systemctl restart apache2
+	
+
+## Previous README:
+
 These are the source files from WANem (http://wanem.sourceforge.net/). 
 
 Update 2016.08.23 : WANem Beta 3.0.3. >> These files are corrected for the depedency on a debian 8 environment based on Beta 3.0.2.
