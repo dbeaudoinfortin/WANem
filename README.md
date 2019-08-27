@@ -17,7 +17,9 @@ WANem running on Ubuntu 18.04.2
 * Restart apache  
 	* systemctl restart apache2
 	
-## Optional bridge configuration
+* Open Browser to http://localhost/WANem to configure your WANem.
+
+## Optional - bridge configuration
 
 * Install Software
 	* apt-get install bridge-utils (only needed if bridge mode is wanted)
@@ -29,7 +31,7 @@ iface br0 inet dhcp
  bridge_ports eth0 eth1 ethn	 
 * Reboot PC
 
-## Optional autologon and open browser to WANem
+## Optional - autologon and open browser to WANem
 * Upper right -> User -> Account settings:
 	* Unlock button on window bar
 	* set automatic logon
