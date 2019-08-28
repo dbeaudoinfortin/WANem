@@ -26,9 +26,10 @@ WANem running on Ubuntu 18.04.2
 * Get all NIC Names( ip address show)
 * Remove all NIC definitions from /etc/network/interfaces
 * Add to /etc/network/interfaces:
-	auto br0
-	iface br0 inet dhcp
-	bridge_ports eth0 eth1 ethn	 
+
+auto br0
+iface br0 inet dhcp
+bridge_ports eth0 eth1 ethn	 
 * Reboot PC
 
 ## Optional - autologon and open browser to WANem
@@ -37,9 +38,10 @@ WANem running on Ubuntu 18.04.2
 	* set automatic logon
 * windows button -> open "startup applications"
 	* add:
-	Name: Firefox
-	Command: /usr/bin/firefox
-	Comment: "Start Firefox with WANem"
+
+Name: Firefox
+Command: /usr/bin/firefox
+Comment: "Start Firefox with WANem"
 * Open Firefox -> Edit -> Preferences
 	* Home
 	* Custom URL: http://localhost/WANem
@@ -49,6 +51,7 @@ WANem running on Ubuntu 18.04.2
 * sudo 
 * crontab -e
 * add the line:
+
 	@reboot sudo /root/default_tc_settings.sh
 
 
