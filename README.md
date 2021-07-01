@@ -1,16 +1,16 @@
-WANem running on Ubuntu 18.04.2
+WANem running on Ubuntu 20.04
 
 # WANem for Ubuntu
 
 ## Preparations
 * Install Software
-	* apt-get install apache2 php7.2 libapache2-mod-php7.2
+	* apt-get install apache2 php7.4 libapache2-mod-php7.4
 
 
 * Adjust system configuration
 	* /etc/sudoers -> Add lines to your file
 	* /etc/apache2 -> Adjust Default Webshare accordingly.
-	* /etc/php/7.2/[apache2|cli]/php.ini -> Verify all parameters are set as in provided files. 
+	* /etc/php/7.4/[apache2|cli]/php.ini -> Verify all parameters are set as in provided files. 
 	* copy /root/* to your /root folder
 	* copy /var/www/* to your /var/www
 
@@ -23,14 +23,39 @@ WANem running on Ubuntu 18.04.2
 
 * Install Software
 	* apt-get install bridge-utils (only needed if bridge mode is wanted)
-* Get all NIC Names( ip address show)
-* Remove all NIC definitions from /etc/network/interfaces
-* Add to /etc/network/interfaces:
+
+	* Create a netplan file: /etc/netplan/02-bridge.yaml, with the following content:
 ```
-auto br0
-iface br0 inet dhcp
-bridge_ports eth0 eth1 ethn	 
+vi /etc/netplan/02-switch.yaml
+Inhalt:
+
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    eth0:
+      dhcp4: no
+      dhcp6: no
+    eth1:
+      dhcp4: no
+      dhcp6: no
+ 
+  bridges:
+    br0:
+      interfaces: [eth0, eth1]
+      dhcp4: no
+      stp: false
+      addresses: [192.168.1.250/24]
+      gateway4: 192.168.1.1
+      nameservers:
+        addresses: [192.168.1.1]
+      parameters:
+        stp: false
+        forward-delay: 0
 ```
+	* Replace the interface names with the interfaces on your pc.
+	* Edit the IPs as needed.
+* Run "sudo netplan apply"
 * Reboot PC
 
 ## Optional - autologon and open browser to WANem
