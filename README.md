@@ -1,6 +1,6 @@
 WANem running on Ubuntu 20.04
 
-# WANem for Ubuntu
+# WANem for Ubuntu 20.04
 
 ## Preparations
 * Install Software
@@ -20,6 +20,12 @@ WANem running on Ubuntu 20.04
 * Open Browser to http://localhost/WANem to configure your WANem.
 
 ## Optional - bridge configuration
+
+When using a bridge configuration, make sure when setting the latency / Bandwidth to apply it to all physical interfaces from the bridge!
+
+As example, you want to have 30ms latency with 10Mbit Bandwidth. In this case you need to set to each interface 15ms (30ms / 2) and 10Mbit.
+With this configuration the sending and receiving packets, between two hosts, are applied 15ms latency in each direction, when passing the interface.
+The 10Mbit on alll Interfaces is needed to enforce the 10Mbit bandwidth in all possible directions.
 
 * Install Software
 	* apt-get install bridge-utils (only needed if bridge mode is wanted)
@@ -75,6 +81,9 @@ Comment: "Start Firefox with WANem"
 
 
 ## Optional - autostart PC with 15ms latency and 50mbit Bandwidth per Interface
+
+When enabling this script, it sets the latency of 15ms and 50Mbit Bandwidth to all Interfaces, that are connected on bootup.
+
 * sudo 
 * crontab -e
 * add the line:
